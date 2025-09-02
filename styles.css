@@ -105,14 +105,15 @@ body {
 
 /* Hero Section */
 .hero {
-    margin-top: 80px;
+    margin-top: 0;
     position: relative;
     color: white;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: 100vh;
+    height: 100vh;
+    min-height: 600px;
     overflow: hidden;
 }
 
@@ -162,9 +163,9 @@ body {
     position: relative;
     z-index: 3;
     text-align: center;
-    max-width: 800px;
+    max-width: 900px;
     padding: 0 20px;
-    margin-bottom: 60px;
+    margin-bottom: 50px;
 }
 
 .hero h1 {
@@ -593,6 +594,25 @@ footer {
 }
 
 /* Responsive Design */
+@media (min-width: 1200px) {
+    .hero h1 {
+        font-size: 4.5rem;
+    }
+    
+    .hero p {
+        font-size: 1.6rem;
+    }
+    
+    .hero-features {
+        gap: 50px;
+    }
+    
+    .hero-feature {
+        min-width: 180px;
+        padding: 25px;
+    }
+}
+
 @media (max-width: 768px) {
     .hamburger {
         display: flex;
@@ -603,8 +623,9 @@ footer {
     }
     
     .hero {
-        min-height: 80vh;
-        padding: 40px 20px;
+        height: 100vh;
+        min-height: 500px;
+        padding: 60px 20px 20px;
     }
     
     .hero h1 {
@@ -657,12 +678,29 @@ footer {
 }
 
 @media (max-width: 480px) {
+    .hero {
+        height: 100vh;
+        min-height: 450px;
+        padding: 60px 15px 15px;
+    }
+    
     .hero h1 {
         font-size: 2rem;
+        line-height: 1.2;
     }
     
     .hero p {
         font-size: 1.1rem;
+    }
+    
+    .hero-features {
+        gap: 15px;
+        margin-bottom: 20px;
+    }
+    
+    .hero-feature {
+        max-width: 150px;
+        padding: 15px;
     }
     
     .services h2, .hours h2, .contact h2 {
@@ -671,6 +709,7 @@ footer {
     
     .nav-container {
         padding: 0 15px;
+        height: 70px;
     }
     
     .container {
