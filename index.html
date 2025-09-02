@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="pl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Stacja Kontroli Pojazdów & Myjnia - Istebna</title>
+    <link rel="stylesheet" href="styles.css">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+</head>
+<body>
+    <header>
+        <nav class="navbar">
+            <div class="nav-container">
+                <div class="logo">
+                    <img src="logo.svg" alt="Logo Stacji Kontroli">
+                    <div class="logo-text">
+                        <h2>SKP Istebna</h2>
+                        <span>Stacja Kontroli & Myjnia</span>
+                    </div>
+                </div>
+                <ul class="nav-menu">
+                    <li><a href="#home">Strona główna</a></li>
+                    <li><a href="#services">Usługi</a></li>
+                    <li><a href="#hours">Godziny</a></li>
+                    <li><a href="#contact">Kontakt</a></li>
+                </ul>
+                <div class="hamburger">
+                    <span></span>
+                    <span></span>
+                    <span></span>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="hero-content">
+                <h1>Profesjonalna Stacja Kontroli Pojazdów</h1>
+                <p>Nowoczesne badania techniczne i kompleksowe mycie samochodów w sercu Istebna</p>
+                <div class="cta-buttons">
+                    <a href="#services" class="btn primary">Nasze usługi</a>
+                    <a href="#contact" class="btn secondary">Kontakt</a>
+                </div>
+            </div>
+            <div class="hero-image">
+                <i class="fas fa-car fa-8x"></i>
+            </div>
+        </section>
+
+        <section id="services" class="services">
+            <div class="container">
+                <h2>Nasze Usługi</h2>
+                
+                <div class="services-grid">
+                    <div class="service-category">
+                        <h3><i class="fas fa-clipboard-check"></i> Stacja Kontroli Pojazdów</h3>
+                        <ul class="service-list">
+                            <li>Badania techniczne samochodów osobowych</li>
+                            <li>Badania techniczne pojazdów ciężarowych</li>
+                            <li>Badania techniczne motocykli</li>
+                            <li>Badania techniczne przyczep i naczep</li>
+                            <li>Badania techniczne autobusów</li>
+                            <li>Kontrola emisji spalin</li>
+                            <li>Badania dodatkowe (światła, hamulce)</li>
+                        </ul>
+                        <div class="price-info">
+                            <p><strong>Godziny otwarcia:</strong> 7:00 - 17:00</p>
+                            <p><strong>Rezerwacja:</strong> Zalecana</p>
+                        </div>
+                    </div>
+
+                    <div class="service-category">
+                        <h3><i class="fas fa-tint"></i> Myjnia Samochodowa</h3>
+                        <ul class="service-list">
+                            <li>Mycie zewnętrzne - program podstawowy</li>
+                            <li>Mycie zewnętrzne - program premium</li>
+                            <li>Mycie z woskowaniem</li>
+                            <li>Mycie podwozia</li>
+                            <li>Płukanie ciśnieniowe</li>
+                            <li>Suszenie gorącym powietrzem</li>
+                            <li>Program dla SUV-ów i busów</li>
+                        </ul>
+                        <div class="price-info wash">
+                            <p><strong>Dostępność:</strong> 24/7 - całodobowa</p>
+                            <p><strong>Obsługa:</strong> Bezobsługowa, samoobsługowa</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="additional-services">
+                    <h3>Dodatkowe Usługi</h3>
+                    <div class="additional-grid">
+                        <div class="additional-item">
+                            <i class="fas fa-tools"></i>
+                            <h4>Drobne naprawy</h4>
+                            <p>Wymiana żarówek, płynów eksploatacyjnych</p>
+                        </div>
+                        <div class="additional-item">
+                            <i class="fas fa-file-alt"></i>
+                            <h4>Pomoc w dokumentacji</h4>
+                            <p>Doradztwo w sprawach formalnych</p>
+                        </div>
+                        <div class="additional-item">
+                            <i class="fas fa-parking"></i>
+                            <h4>Parking</h4>
+                            <p>Bezpłatny parking dla klientów</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="hours" class="hours">
+            <div class="container">
+                <h2>Godziny Otwarcia</h2>
+                <div class="hours-grid">
+                    <div class="hours-card">
+                        <h3><i class="fas fa-clipboard-check"></i> Stacja Kontroli</h3>
+                        <div class="schedule">
+                            <div class="day-schedule">
+                                <span class="day">Poniedziałek - Piątek:</span>
+                                <span class="time">7:00 - 17:00</span>
+                            </div>
+                            <div class="day-schedule">
+                                <span class="day">Sobota:</span>
+                                <span class="time">8:00 - 14:00</span>
+                            </div>
+                            <div class="day-schedule">
+                                <span class="day">Niedziela:</span>
+                                <span class="time">Zamknięte</span>
+                            </div>
+                        </div>
+                        <p class="note">Ostatnie badanie 30 min przed zamknięciem</p>
+                    </div>
+
+                    <div class="hours-card">
+                        <h3><i class="fas fa-tint"></i> Myjnia</h3>
+                        <div class="schedule">
+                            <div class="day-schedule highlight">
+                                <span class="day">Codziennie:</span>
+                                <span class="time">24/7</span>
+                            </div>
+                        </div>
+                        <p class="note">Całodobowo dostępna, bezobsługowa</p>
+                        <p class="note">Płatność kartą lub gotówką</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="contact" class="contact">
+            <div class="container">
+                <h2>Kontakt</h2>
+                <div class="contact-grid">
+                    <div class="contact-info">
+                        <h3>Informacje Kontaktowe</h3>
+                        <div class="contact-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <strong>Adres:</strong><br>
+                                Istebna 1534<br>
+                                43-470 Istebna
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-phone"></i>
+                            <div>
+                                <strong>Telefon:</strong><br>
+                                <a href="tel:228556140">22 855 61 40</a>
+                            </div>
+                        </div>
+                        <div class="contact-item">
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <strong>Email:</strong><br>
+                                <a href="mailto:kontakt@skpistebna.pl">kontakt@skpistebna.pl</a>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="map-section">
+                        <h3>Lokalizacja</h3>
+                        <div class="map-container">
+                            <iframe 
+                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2593.7!2d18.8900!3d49.6089!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4715f2f1a2f5f5f5%3A0x5f5f5f5f5f5f5f5f!2sIstebna%201534%2C%2043-470%20Istebna%2C%20Polska!5e0!3m2!1spl!2spl!4v1693920000000!5m2!1spl!2spl"
+                                width="100%" 
+                                height="300" 
+                                style="border:0; border-radius: 10px;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade">
+                            </iframe>
+                            <div class="map-info">
+                                <p><strong>Istebna 1534, 43-470 Istebna</strong></p>
+                                <small>W centrum Istebna, łatwy dojazd z głównej drogi</small>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <div class="logo">
+                        <img src="logo.svg" alt="Logo SKP">
+                        <span>SKP Istebna</span>
+                    </div>
+                    <p>Profesjonalne badania techniczne i mycie pojazdów w Istebna</p>
+                </div>
+                <div class="footer-section">
+                    <h4>Szybkie linki</h4>
+                    <ul>
+                        <li><a href="#services">Usługi</a></li>
+                        <li><a href="#hours">Godziny</a></li>
+                        <li><a href="#contact">Kontakt</a></li>
+                    </ul>
+                </div>
+                <div class="footer-section">
+                    <h4>Kontakt</h4>
+                    <p>Istebna 1534, 43-470 Istebna</p>
+                    <p>Tel: 22 855 61 40</p>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2025 Stacja Kontroli Pojazdów Istebna. Wszystkie prawa zastrzeżone.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
