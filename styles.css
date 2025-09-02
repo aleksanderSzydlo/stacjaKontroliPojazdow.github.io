@@ -44,10 +44,18 @@ body {
     color: white;
 }
 
-.logo img {
+.logo img, .logo-img {
+    width: 60px;
+    height: 60px;
+    margin-right: 15px;
+    object-fit: contain;
+}
+
+.footer-logo {
     width: 50px;
     height: 50px;
     margin-right: 15px;
+    object-fit: contain;
 }
 
 .logo-text h2 {
@@ -98,39 +106,127 @@ body {
 /* Hero Section */
 .hero {
     margin-top: 80px;
-    padding: 80px 20px;
-    background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+    position: relative;
     color: white;
     display: flex;
+    flex-direction: column;
     align-items: center;
-    min-height: 70vh;
-    max-width: 1200px;
-    margin-left: auto;
-    margin-right: auto;
+    justify-content: center;
+    min-height: 100vh;
+    overflow: hidden;
+}
+
+.hero-background {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1;
+}
+
+.hero-slides {
+    position: relative;
+    width: 100%;
+    height: 100%;
+}
+
+.hero-slide {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    opacity: 0;
+    transition: opacity 2s ease-in-out;
+}
+
+.hero-slide.active {
+    opacity: 1;
+}
+
+.hero-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(135deg, rgba(30, 60, 114, 0.8), rgba(42, 82, 152, 0.6));
+    z-index: 2;
 }
 
 .hero-content {
-    flex: 1;
-    max-width: 600px;
+    position: relative;
+    z-index: 3;
+    text-align: center;
+    max-width: 800px;
+    padding: 0 20px;
+    margin-bottom: 60px;
 }
 
 .hero h1 {
-    font-size: 3.5rem;
+    font-size: 4rem;
     font-weight: 700;
     margin-bottom: 20px;
     line-height: 1.2;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
 .hero p {
-    font-size: 1.3rem;
+    font-size: 1.4rem;
     margin-bottom: 40px;
     opacity: 0.95;
+    text-shadow: 1px 1px 2px rgba(0,0,0,0.5);
 }
 
+.hero-features {
+    position: relative;
+    z-index: 3;
+    display: flex;
+    gap: 40px;
+    justify-content: center;
+    flex-wrap: wrap;
+    margin-bottom: 40px;
+}
+
+.hero-feature {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 10px;
+    background: rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(10px);
+    padding: 20px;
+    border-radius: 15px;
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    transition: transform 0.3s ease, background 0.3s ease;
+}
+
+.hero-feature:hover {
+    transform: translateY(-10px);
+    background: rgba(255, 255, 255, 0.15);
+}
+
+.hero-feature i {
+    font-size: 2rem;
+    color: white;
+}
+
+.hero-feature span {
+    font-size: 0.9rem;
+    font-weight: 600;
+    text-align: center;
+}
+
+/* Buttons */
 .cta-buttons {
     display: flex;
     gap: 20px;
     flex-wrap: wrap;
+    justify-content: center;
 }
 
 .btn {
@@ -146,11 +242,12 @@ body {
 .btn.primary {
     background: white;
     color: #1e3c72;
+    box-shadow: 0 5px 20px rgba(0,0,0,0.2);
 }
 
 .btn.primary:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.3);
 }
 
 .btn.secondary {
@@ -162,16 +259,7 @@ body {
 .btn.secondary:hover {
     background: white;
     color: #1e3c72;
-}
-
-.hero-image {
-    flex: 1;
-    text-align: center;
-    opacity: 0.3;
-}
-
-.hero-image i {
-    color: white;
+    transform: translateY(-3px);
 }
 
 /* Services Section */
@@ -515,8 +603,7 @@ footer {
     }
     
     .hero {
-        flex-direction: column;
-        text-align: center;
+        min-height: 80vh;
         padding: 40px 20px;
     }
     
@@ -524,8 +611,18 @@ footer {
         font-size: 2.5rem;
     }
     
-    .hero-image {
-        margin-top: 30px;
+    .hero p {
+        font-size: 1.2rem;
+    }
+    
+    .hero-features {
+        flex-direction: column;
+        gap: 20px;
+    }
+    
+    .hero-feature {
+        width: 100%;
+        max-width: 200px;
     }
     
     .services-grid {
@@ -546,10 +643,12 @@ footer {
     
     .cta-buttons {
         flex-direction: column;
+        align-items: center;
     }
     
     .btn {
         text-align: center;
+        min-width: 200px;
     }
     
     .map-container iframe {

@@ -17,7 +17,37 @@ document.addEventListener('DOMContentLoaded', function() {
             });
         });
     }
+
+    // Initialize hero slideshow
+    initHeroSlideshow();
 });
+
+// Hero Background Slideshow
+function initHeroSlideshow() {
+    const slides = document.querySelectorAll('.hero-slide');
+    let currentSlide = 0;
+    
+    if (slides.length <= 1) return;
+    
+    function nextSlide() {
+        slides[currentSlide].classList.remove('active');
+        currentSlide = (currentSlide + 1) % slides.length;
+        slides[currentSlide].classList.add('active');
+    }
+    
+    // Change slide every 5 seconds
+    setInterval(nextSlide, 5000);
+    
+    // Preload images for smooth transitions
+    slides.forEach(slide => {
+        const bgImage = slide.style.backgroundImage;
+        if (bgImage) {
+            const url = bgImage.slice(4, -1).replace(/["']/g, "");
+            const img = new Image();
+            img.src = url;
+        }
+    });
+}
 
 // Smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
