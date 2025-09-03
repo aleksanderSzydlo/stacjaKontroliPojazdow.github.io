@@ -55,18 +55,17 @@
     <header>
         <nav class="navbar" role="navigation" aria-label="Nawigacja główna">
             <div class="nav-container">
-                <div class="logo">
+                <a href="#home" class="logo" aria-label="SKP Istebna - Powrót do strony głównej">
                     <img src="logo/SKP logo jasne.png" alt="Logo Stacji Kontroli SKP Istebna" class="logo-img">
                     <div class="logo-text">
                         <h2>SKP Istebna</h2>
                         <span>Stacja Kontroli & Myjnia</span>
                     </div>
-                </div>
+                </a>
                 <ul class="nav-menu" role="menubar">
-                    <li role="none"><a href="#home" role="menuitem">Strona główna</a></li>
                     <li role="none"><a href="#services" role="menuitem">Usługi</a></li>
                     <li role="none"><a href="#hours" role="menuitem">Godziny</a></li>
-                    <li role="none"><a href="#contact-form" role="menuitem">Formularz</a></li>
+                    <li role="none"><a href="#location" role="menuitem">Lokalizacja</a></li>
                     <li role="none"><a href="#contact" role="menuitem">Kontakt</a></li>
                 </ul>
                 <div class="hamburger" aria-label="Toggle navigation menu" role="button" tabindex="0" aria-expanded="false">
@@ -96,7 +95,7 @@
                 <p>Nowoczesne badania techniczne i kompleksowe mycie samochodów w sercu malowniczej Istebna</p>
                 <div class="cta-buttons">
                     <a href="#services" class="btn primary">Nasze usługi</a>
-                    <a href="#contact-form" class="btn secondary">Napisz do nas</a>
+                    <a href="#location" class="btn secondary">Gdzie jesteśmy</a>
                 </div>
             </div>
             <div class="hero-features">
@@ -216,52 +215,63 @@
             </div>
         </section>
 
-        <section id="contact-form" class="contact-form">
+        <section id="location" class="location">
             <div class="container">
-                <h2>Napisz do nas</h2>
-                <p class="section-subtitle">Masz pytania? Skontaktuj się z nami bezpośrednio przez formularz</p>
+                <h2>Lokalizacja</h2>
+                <p class="section-subtitle">Znajdź nas łatwo - jesteśmy w centrum Istebna</p>
                 
-                <div class="form-container">
-                    <form id="contact-form-element" class="email-form">
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="user_name">Imię i nazwisko</label>
-                                <input type="text" id="user_name" name="user_name" required>
-                            </div>
-                            <div class="form-group">
-                                <label for="user_email">Email</label>
-                                <input type="email" id="user_email" name="user_email" required>
+                <div class="location-grid">
+                    <div class="location-info">
+                        <div class="location-item">
+                            <i class="fas fa-map-marker-alt"></i>
+                            <div>
+                                <h4>Adres</h4>
+                                <p>Istebna 1534<br>43-470 Istebna</p>
                             </div>
                         </div>
                         
-                        <div class="form-row">
-                            <div class="form-group">
-                                <label for="user_phone">Telefon</label>
-                                <input type="tel" id="user_phone" name="user_phone">
-                            </div>
-                            <div class="form-group">
-                                <label for="service_type">Rodzaj usługi</label>
-                                <select id="service_type" name="service_type">
-                                    <option value="">Wybierz usługę</option>
-                                    <option value="badania-techniczne">Badania techniczne</option>
-                                    <option value="myjnia">Myjnia samochodowa</option>
-                                    <option value="inne">Inne</option>
-                                </select>
+                        <div class="location-item">
+                            <i class="fas fa-route"></i>
+                            <div>
+                                <h4>Dojazd</h4>
+                                <p>Łatwy dostęp z głównej drogi<br>Parking na miejscu</p>
                             </div>
                         </div>
                         
-                        <div class="form-group">
-                            <label for="message">Wiadomość</label>
-                            <textarea id="message" name="message" rows="5" required placeholder="Opisz szczegóły swojego zapytania..."></textarea>
+                        <div class="location-item">
+                            <i class="fas fa-landmark"></i>
+                            <div>
+                                <h4>Okolica</h4>
+                                <p>Centrum Istebna<br>Blisko głównych atrakcji</p>
+                            </div>
                         </div>
-                        
-                        <button type="submit" class="btn-submit" id="submit-btn">
-                            <i class="fas fa-paper-plane"></i>
-                            Wyślij wiadomość
-                        </button>
-                        
-                        <div id="form-message" class="form-message"></div>
-                    </form>
+                    </div>
+                    
+                    <div class="map-section">
+                        <div class="map-container">
+                            <iframe 
+                                src="https://maps.google.com/maps?q=Istebna+1534,+43-470+Istebna&t=&z=15&ie=UTF8&iwloc=&output=embed"
+                                width="100%" 
+                                height="300" 
+                                style="border:0; border-radius: 10px;" 
+                                allowfullscreen="" 
+                                loading="lazy" 
+                                referrerpolicy="no-referrer-when-downgrade"
+                                title="Mapa lokalizacji SKP Istebna">
+                            </iframe>
+                            <div class="map-fallback" style="display:none; text-align: center; padding: 20px;">
+                                <p style="margin-bottom: 10px;">Nie można załadować mapy?</p>
+                                <a href="https://www.google.com/maps/search/Istebna+1534,+43-470+Istebna" target="_blank" rel="noopener" 
+                                   style="background: #1e3c72; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; display: inline-block;">
+                                    Otwórz w Google Maps
+                                </a>
+                            </div>
+                            <div class="map-info">
+                                <p><strong>Istebna 1534, 43-470 Istebna</strong></p>
+                                <small>W centrum Istebna, łatwy dojazd z głównej drogi</small>
+                            </div>
+                        </div>
+                    </div>
                 </div>
             </div>
         </section>
@@ -269,6 +279,8 @@
         <section id="contact" class="contact">
             <div class="container">
                 <h2>Kontakt</h2>
+                <p class="section-subtitle">Masz pytania? Skontaktuj się z nami telefonicznie, mailowo lub przez formularz</p>
+                
                 <div class="contact-grid">
                     <div class="contact-info">
                         <h3>Informacje Kontaktowe</h3>
@@ -296,22 +308,49 @@
                         </div>
                     </div>
 
-                    <div class="map-section">
-                        <h3>Lokalizacja</h3>
-                        <div class="map-container">
-                            <iframe 
-                                src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2593.7!2d18.8900!3d49.6089!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x4715f2f1a2f5f5f5%3A0x5f5f5f5f5f5f5f5f!2sIstebna%201534%2C%2043-470%20Istebna%2C%20Polska!5e0!3m2!1spl!2spl!4v1693920000000!5m2!1spl!2spl"
-                                width="100%" 
-                                height="300" 
-                                style="border:0; border-radius: 10px;" 
-                                allowfullscreen="" 
-                                loading="lazy" 
-                                referrerpolicy="no-referrer-when-downgrade">
-                            </iframe>
-                            <div class="map-info">
-                                <p><strong>Istebna 1534, 43-470 Istebna</strong></p>
-                                <small>W centrum Istebna, łatwy dojazd z głównej drogi</small>
-                            </div>
+                    <div class="form-section">
+                        <h3>Napisz do nas</h3>
+                        <div class="form-container">
+                            <form id="contact-form-element" class="email-form">
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="user_name">Imię i nazwisko</label>
+                                        <input type="text" id="user_name" name="user_name" required>
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="user_email">Email</label>
+                                        <input type="email" id="user_email" name="user_email" required>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-row">
+                                    <div class="form-group">
+                                        <label for="user_phone">Telefon</label>
+                                        <input type="tel" id="user_phone" name="user_phone">
+                                    </div>
+                                    <div class="form-group">
+                                        <label for="service_type">Rodzaj usługi</label>
+                                        <select id="service_type" name="service_type">
+                                            <option value="">Wybierz usługę</option>
+                                            <option value="badania-techniczne">Badania techniczne</option>
+                                            <option value="myjnia">Myjnia samochodowa</option>
+                                            <option value="inne">Inne</option>
+                                        </select>
+                                    </div>
+                                </div>
+                                
+                                <div class="form-group">
+                                    <label for="message">Wiadomość</label>
+                                    <textarea id="message" name="message" rows="5" required placeholder="Opisz szczegóły swojego zapytania..."></textarea>
+                                </div>
+                                
+                                <button type="submit" class="btn-submit" id="submit-btn">
+                                    <i class="fas fa-paper-plane"></i>
+                                    Wyślij wiadomość
+                                </button>
+                                
+                                <div id="form-message" class="form-message"></div>
+                            </form>
                         </div>
                     </div>
                 </div>
@@ -334,7 +373,7 @@
                     <ul>
                         <li><a href="#services">Usługi</a></li>
                         <li><a href="#hours">Godziny</a></li>
-                        <li><a href="#contact-form">Formularz kontaktowy</a></li>
+                        <li><a href="#location">Lokalizacja</a></li>
                         <li><a href="#contact">Kontakt</a></li>
                     </ul>
                 </div>

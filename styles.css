@@ -60,7 +60,15 @@ body {
     display: flex;
     align-items: center;
     color: white;
+    text-decoration: none;
+    gap: 0.5rem;
+    cursor: pointer;
+    transition: all 0.3s ease;
+    padding: 0.5rem;
+    border-radius: 8px;
 }
+
+/* Logo hover i focus states - usunieto podswietlanie */
 
 .logo img, .logo-img {
     width: 60px;
@@ -101,11 +109,30 @@ body {
     transition: all 0.3s ease;
     padding: 10px 15px;
     border-radius: 5px;
+    position: relative;
 }
 
 .nav-menu a:hover {
     background-color: rgba(255,255,255,0.1);
     transform: translateY(-2px);
+}
+
+.nav-menu a.active {
+    background-color: rgba(255,255,255,0.2);
+    color: #fff;
+    font-weight: 600;
+}
+
+.nav-menu a.active::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 30px;
+    height: 2px;
+    background: white;
+    border-radius: 1px;
 }
 
 .hamburger {
@@ -489,7 +516,61 @@ body {
     margin-top: 10px;
 }
 
-/* Contact Form Section */
+/* Location Section */
+.location {
+    padding: 100px 20px;
+    background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+}
+
+.location h2 {
+    text-align: center;
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #1e3c72;
+}
+
+.location-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(450px, 1fr));
+    gap: 40px;
+    margin-top: 60px;
+}
+
+.location-info h3 {
+    color: #1e3c72;
+    margin-bottom: 30px;
+    font-size: 1.5rem;
+}
+
+.location-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    margin-bottom: 25px;
+    padding: 20px;
+    background: white;
+    border-radius: 10px;
+    box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+}
+
+.location-item i {
+    color: #1e3c72;
+    font-size: 1.2rem;
+    margin-top: 5px;
+}
+
+.location-item h4 {
+    color: #1e3c72;
+    margin-bottom: 5px;
+    font-size: 1.1rem;
+}
+
+.location-item p {
+    margin: 0;
+    color: #666;
+}
+
+/* Contact Form Section - now used in Contact section */
 .contact-form {
     padding: 100px 20px;
     background: linear-gradient(135deg, #f8f9fa, #e9ecef);
@@ -654,6 +735,16 @@ body {
     font-size: 2.5rem;
     margin-bottom: 60px;
     color: #1e3c72;
+}
+
+.contact .section-subtitle {
+    text-align: center;
+    font-size: 1.2rem;
+    color: #666;
+    margin-bottom: 50px;
+    max-width: 600px;
+    margin-left: auto;
+    margin-right: auto;
 }
 
 .contact-grid {
@@ -837,10 +928,20 @@ footer {
         padding: 15px 20px;
         border-bottom: 1px solid rgba(255,255,255,0.1);
         text-align: center;
+        position: relative;
     }
     
     .nav-menu a:hover {
         background-color: rgba(255,255,255,0.15);
+    }
+    
+    .nav-menu a.active {
+        background-color: rgba(255,255,255,0.25);
+        font-weight: 600;
+    }
+    
+    .nav-menu a.active::after {
+        display: none; /* Hide bottom border in mobile menu */
     }
     
     .hamburger.active span:nth-child(1) {
@@ -979,6 +1080,16 @@ footer {
     
     .map-container iframe {
         height: 200px;
+    }
+}
+
+@media (max-width: 768px) {
+    .location-grid {
+        grid-template-columns: 1fr;
+    }
+    
+    .location-item {
+        padding: 15px;
     }
 }
 

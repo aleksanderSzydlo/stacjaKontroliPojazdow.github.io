@@ -110,23 +110,56 @@ function initHeroSlideshow() {
     });
 }
 
-// Smooth scrolling for navigation links
+// Enhanced smooth scrolling for navigation links
 document.querySelectorAll('a[href^="#"]').forEach(anchor => {
     anchor.addEventListener('click', function (e) {
         e.preventDefault();
-        const target = document.querySelector(this.getAttribute('href'));
+        const targetId = this.getAttribute('href');
+        const target = document.querySelector(targetId);
+        
         if (target) {
             const offsetTop = target.offsetTop - 80; // Account for fixed navbar
+            
+            // Smooth scroll to target
             window.scrollTo({
                 top: offsetTop,
                 behavior: 'smooth'
             });
+            
+            // Update active navigation link immediately
+            setTimeout(() => {
+                updateActiveNavLink();
+            }, 100);
+            
+            // Close mobile menu if open
+            const hamburger = document.querySelector('.hamburger');
+            const navMenu = document.querySelector('.nav-menu');
+            if (hamburger && navMenu && hamburger.classList.contains('active')) {
+                hamburger.classList.remove('active');
+                navMenu.classList.remove('active');
+                hamburger.setAttribute('aria-expanded', 'false');
+                document.body.style.overflow = '';
+            }
         }
     });
 });
 
-// Navbar background change on scroll
-window.addEventListener('scroll', function() {
+// Throttle function for better performance
+function throttle(func, limit) {
+    let inThrottle;
+    return function() {
+        const args = arguments;
+        const context = this;
+        if (!inThrottle) {
+            func.apply(context, args);
+            inThrottle = true;
+            setTimeout(() => inThrottle = false, limit);
+        }
+    }
+}
+
+// Navbar background change on scroll with scroll spy (throttled)
+const handleScroll = throttle(function() {
     const navbar = document.querySelector('.navbar');
     if (window.scrollY > 50) {
         navbar.style.backgroundColor = 'rgba(30, 60, 114, 0.95)';
@@ -135,7 +168,51 @@ window.addEventListener('scroll', function() {
         navbar.style.backgroundColor = '';
         navbar.style.backdropFilter = '';
     }
-});
+    
+    // Update active navigation link
+    updateActiveNavLink();
+}, 16); // ~60fps
+
+window.addEventListener('scroll', handleScroll);
+
+// Scroll Spy - Highlight active navigation link
+function updateActiveNavLink() {
+    const sections = document.querySelectorAll('main section[id]');
+    const navLinks = document.querySelectorAll('.nav-menu a[href^="#"]');
+    const logo = document.querySelector('.logo[href="#home"]');
+    
+    let currentActiveSection = '';
+    const scrollPosition = window.scrollY + 120; // Account for fixed navbar height
+    
+    // Find the current section
+    sections.forEach(section => {
+        const sectionTop = section.offsetTop;
+        const sectionHeight = section.offsetHeight;
+        
+        if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+            currentActiveSection = section.getAttribute('id');
+        }
+    });
+    
+    // If we're at the very top, highlight home
+    if (window.scrollY < 100) {
+        currentActiveSection = 'home';
+    }
+    
+    // Update navigation links
+    navLinks.forEach(link => {
+        const href = link.getAttribute('href');
+        const targetId = href.substring(1); // Remove the # symbol
+        
+        if (targetId === currentActiveSection) {
+            link.classList.add('active');
+        } else {
+            link.classList.remove('active');
+        }
+    });
+    
+    // Logo click effect - usunieto podswietlanie po kliknieciu
+}
 
 // Initialize all functionality with error handling
 document.addEventListener('DOMContentLoaded', function() {
@@ -165,6 +242,9 @@ function initializeApp() {
     // Core functionality
     initEmailJS();
     
+    // Initialize scroll spy
+    updateActiveNavLink();
+    
     // Enhanced features
     if (typeof window.IntersectionObserver !== 'undefined') {
         initScrollAnimations();
@@ -172,6 +252,9 @@ function initializeApp() {
     
     // Update service status
     updateServiceStatus();
+    
+    // Initialize map error handling
+    initMapFallback();
 }
 
 function initBasicFunctionality() {
@@ -495,4 +578,118 @@ if (!document.querySelector('#pulse-animation-style')) {
         }
     `;
     document.head.appendChild(style);
+}
+
+// Initialize map error handling
+function initMapFallback() {
+    // Fallback for Google Maps API
+    const mapElement = document.getElementById('map');
+    if (mapElement) {
+        const fallbackLat = parseFloat(mapElement.dataset.fallbackLat) || 49.5923;
+        const fallbackLng = parseFloat(mapElement.dataset.fallbackLng) || 19.002;
+        const fallbackZoom = parseInt(mapElement.dataset.fallbackZoom) || 15;
+        
+        // Initialize map with fallback coordinates
+        const map = new google.maps.Map(mapElement, {
+            center: { lat: fallbackLat, lng: fallbackLng },
+            zoom: fallbackZoom,
+            disableDefaultUI: true,
+            zoomControl: true,
+            streetViewControl: false,
+            mapTypeControl: false,
+            fullscreenControl: false,
+            styles: [
+                {
+                    "featureType": "all",
+                    "elementType": "geometry",
+                    "stylers": [
+                        {
+                            "saturation": 0
+                        },
+                        {
+                            "lightness": 0
+                        },
+                        {
+                            "visibility": "on"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "administrative",
+                    "elementType": "labels",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "poi",
+                    "elementType": "labels",
+                    "stylers": [
+                        {
+                            "visibility": "off"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "road",
+                    "elementType": "geometry",
+                    "stylers": [
+                        {
+                            "lightness": 100
+                        },
+                        {
+                            "visibility": "simplified"
+                        }
+                    ]
+                },
+                {
+                    "featureType": "water",
+                    "elementType": "geometry",
+                    "stylers": [
+                        {
+                            "color": "#aeeeee"
+                        }
+                    ]
+                }
+            ]
+        });
+        
+        // Add a marker at the fallback location
+        const marker = new google.maps.Marker({
+            position: { lat: fallbackLat, lng: fallbackLng },
+            map: map,
+            title: 'Nasza lokalizacja',
+            icon: {
+                url: 'data:image/svg+xml;charset=UTF-8,%3Csvg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" width="30" height="30"%3E%3Cpath fill="%232962FF" d="M12 2C8.13 2 5 5.13 5 9c0 3.28 4.29 8.55 6.29 10.45.18.18.43.29.71.29s.53-.11.71-.29C14.71 17.55 19 12.28 19 9c0-3.87-3.13-7-7-7zm0 16.5c-.83 0-1.5-.67-1.5-1.5S11.17 15 12 15s1.5.67 1.5 1.5S12.83 18.5 12 18.5zM12 4c-2.21 0-4 1.79-4 4 0 1.85 2.69 5.36 4 7.07 1.31-1.71 4-5.22 4-7.07 0-2.21-1.79-4-4-4z"%3E%3C/path%3E%3C/svg%3E',
+                scaledSize: new google.maps.Size(30, 30)
+            }
+        });
+    }
+    
+    const iframe = document.querySelector('.map-container iframe');
+    const fallback = document.querySelector('.map-fallback');
+    
+    if (iframe && fallback) {
+        // Check if iframe loads successfully
+        iframe.addEventListener('load', function() {
+            console.log('Mapa załadowana pomyślnie');
+        });
+        
+        iframe.addEventListener('error', function() {
+            console.warn('Błąd ładowania mapy, pokazuję fallback');
+            iframe.style.display = 'none';
+            fallback.style.display = 'block';
+        });
+        
+        // Timeout fallback - jeśli mapa nie załaduje się w 10 sekund
+        setTimeout(() => {
+            if (!iframe.contentDocument && !iframe.contentWindow) {
+                console.warn('Mapa nie załadowała się w czasie, pokazuję fallback');
+                iframe.style.display = 'none';
+                fallback.style.display = 'block';
+            }
+        }, 10000);
+    }
 }
