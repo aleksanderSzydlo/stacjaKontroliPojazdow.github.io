@@ -3,6 +3,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="SKP Istebna - Profesjonalna stacja kontroli pojazdów i myjnia w Istebna. Badania techniczne, mycie 24/7, w sercu Beskidów.">
+    <meta name="keywords" content="stacja kontroli pojazdów, badania techniczne, myjnia, Istebna, SKP, Beskidy">
+    <meta name="author" content="SKP Istebna">
+    <meta name="robots" content="index, follow">
+    
+    <!-- Open Graph Meta Tags -->
+    <meta property="og:title" content="SKP Istebna - Stacja Kontroli Pojazdów & Myjnia">
+    <meta property="og:description" content="Profesjonalne badania techniczne i kompleksowe mycie samochodów w sercu malowniczej Istebna">
+    <meta property="og:image" content="logo/SKP logo przezroczyste.png">
+    <meta property="og:url" content="https://aleksanderszydlo.github.io/stacjaKontroliPojazdow.github.io/">
+    <meta property="og:type" content="website">
+    
+    <!-- Security Headers -->
+    <meta http-equiv="X-Content-Type-Options" content="nosniff">
+    <meta http-equiv="X-Frame-Options" content="DENY">
+    <meta http-equiv="X-XSS-Protection" content="1; mode=block">
+    
     <title>Stacja Kontroli Pojazdów & Myjnia - Istebna</title>
     
     <!-- Favicon -->
@@ -11,14 +28,32 @@
     <link rel="shortcut icon" href="logo/SKP logo przezroczyste.png">
     <link rel="apple-touch-icon" href="logo/SKP logo przezroczyste.png">
     
+    <!-- PWA Manifest -->
+    <link rel="manifest" href="manifest.json">
+    
+    <!-- Preload critical resources -->
+    <link rel="preload" href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" as="style">
+    <link rel="preload" href="logo/SKP logo jasne.png" as="image">
+    <link rel="preload" href="zdjecia/gory 1.jpg" as="image">
+    
+    <!-- DNS prefetch for external resources -->
+    <link rel="dns-prefetch" href="//fonts.googleapis.com">
+    <link rel="dns-prefetch" href="//cdnjs.cloudflare.com">
+    <link rel="dns-prefetch" href="//cdn.jsdelivr.net">
+    
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
+    
+    <!-- EmailJS - Load asynchronously -->
+    <script async type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 <body>
+    <!-- Skip navigation for accessibility -->
+    <a href="#main-content" class="skip-nav">Przejdź do treści głównej</a>
+    
     <header>
-        <nav class="navbar">
+        <nav class="navbar" role="navigation" aria-label="Nawigacja główna">
             <div class="nav-container">
                 <div class="logo">
                     <img src="logo/SKP logo jasne.png" alt="Logo Stacji Kontroli SKP Istebna" class="logo-img">
@@ -27,14 +62,14 @@
                         <span>Stacja Kontroli & Myjnia</span>
                     </div>
                 </div>
-                <ul class="nav-menu">
-                    <li><a href="#home">Strona główna</a></li>
-                    <li><a href="#services">Usługi</a></li>
-                    <li><a href="#hours">Godziny</a></li>
-                    <li><a href="#contact-form">Formularz</a></li>
-                    <li><a href="#contact">Kontakt</a></li>
+                <ul class="nav-menu" role="menubar">
+                    <li role="none"><a href="#home" role="menuitem">Strona główna</a></li>
+                    <li role="none"><a href="#services" role="menuitem">Usługi</a></li>
+                    <li role="none"><a href="#hours" role="menuitem">Godziny</a></li>
+                    <li role="none"><a href="#contact-form" role="menuitem">Formularz</a></li>
+                    <li role="none"><a href="#contact" role="menuitem">Kontakt</a></li>
                 </ul>
-                <div class="hamburger">
+                <div class="hamburger" aria-label="Toggle navigation menu" role="button" tabindex="0" aria-expanded="false">
                     <span></span>
                     <span></span>
                     <span></span>
@@ -43,7 +78,7 @@
         </nav>
     </header>
 
-    <main>
+    <main id="main-content"  role="main">
         <section id="home" class="hero">
             <div class="hero-background">
                 <div class="hero-slides">

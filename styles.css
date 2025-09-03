@@ -12,6 +12,24 @@ body {
     background-color: #f8f9fa;
 }
 
+/* Skip navigation for accessibility */
+.skip-nav {
+    position: absolute;
+    top: -40px;
+    left: 6px;
+    background: #1e3c72;
+    color: white;
+    padding: 8px;
+    text-decoration: none;
+    border-radius: 0 0 4px 4px;
+    z-index: 10000;
+    transition: top 0.3s ease;
+}
+
+.skip-nav:focus {
+    top: 0;
+}
+
 .container {
     max-width: 1200px;
     margin: 0 auto;
@@ -546,6 +564,28 @@ body {
     box-shadow: 0 0 0 3px rgba(30, 60, 114, 0.1);
 }
 
+/* Form validation states */
+.form-group input.error,
+.form-group select.error,
+.form-group textarea.error {
+    border-color: #dc3545;
+    box-shadow: 0 0 0 3px rgba(220, 53, 69, 0.1);
+}
+
+.form-group input.success,
+.form-group select.success,
+.form-group textarea.success {
+    border-color: #28a745;
+    box-shadow: 0 0 0 3px rgba(40, 167, 69, 0.1);
+}
+
+.field-error {
+    display: block;
+    margin-top: 4px;
+    font-size: 0.8rem;
+    color: #dc3545;
+}
+
 .form-group textarea {
     resize: vertical;
     min-height: 120px;
@@ -770,6 +810,49 @@ footer {
     
     .nav-menu {
         display: none;
+        position: fixed;
+        top: 80px;
+        left: 0;
+        width: 100%;
+        background: linear-gradient(135deg, #1e3c72, #2a5298);
+        flex-direction: column;
+        padding: 20px 0;
+        z-index: 999;
+        box-shadow: 0 2px 20px rgba(0,0,0,0.2);
+        transform: translateY(-100%);
+        transition: all 0.3s ease;
+    }
+    
+    .nav-menu.active {
+        display: flex;
+        transform: translateY(0);
+    }
+    
+    .nav-menu li {
+        margin: 5px 20px;
+    }
+    
+    .nav-menu a {
+        display: block;
+        padding: 15px 20px;
+        border-bottom: 1px solid rgba(255,255,255,0.1);
+        text-align: center;
+    }
+    
+    .nav-menu a:hover {
+        background-color: rgba(255,255,255,0.15);
+    }
+    
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(5px, 5px);
+    }
+    
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -6px);
     }
     
     .hero {
