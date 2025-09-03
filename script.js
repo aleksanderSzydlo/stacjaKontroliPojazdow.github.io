@@ -277,5 +277,77 @@ document.head.appendChild(style);
 // Initialize all functionality
 document.addEventListener('DOMContentLoaded', function() {
     handleContactForm();
+    initEmailJS();
     console.log('Stacja Kontroli Pojazdów - Website loaded successfully');
 });
+
+// EmailJS Integration
+function initEmailJS() {
+    // Initialize EmailJS with your public key
+    emailjs.init('3qSdcdYGB_F2FxHQv');
+    
+    const form = document.getElementById('contact-form-element');
+    const submitBtn = document.getElementById('submit-btn');
+    const formMessage = document.getElementById('form-message');
+    
+    if (form) {
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+            
+            // Disable submit button and show loading state
+            submitBtn.disabled = true;
+            submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Wysyłanie...';
+            
+            // Clear previous messages
+            formMessage.className = 'form-message';
+            formMessage.style.display = 'none';
+            
+            // Get form data and add additional parameters
+            const templateParams = {
+                from_name: form.user_name.value,
+                from_email: form.user_email.value,
+                message: form.message.value,
+                subject: 'Wiadomość ze strony',
+                reply_to: form.user_email.value,
+                phone: form.user_phone.value,
+                service: form.service_type.value,
+                web: 'SKP - Stacja kontroli pojazdów Istebna'
+            };
+            
+            // Send email using EmailJS
+            emailjs.send('service_wvhublc', 'template_ypn9c6y', templateParams)
+                .then(function(response) {
+                    console.log('SUCCESS!', response.status, response.text);
+                    showFormMessage('Wiadomość została wysłana pomyślnie! Skontaktujemy się z Państwem wkrótce.', 'success');
+                    form.reset();
+                }, function(error) {
+                    console.log('FAILED...', error);
+                    showFormMessage('Wystąpił błąd podczas wysyłania wiadomości. Proszę spróbować ponownie lub skontaktować się telefonicznie.', 'error');
+                })
+                .finally(function() {
+                    // Re-enable submit button
+                    submitBtn.disabled = false;
+                    submitBtn.innerHTML = '<i class="fas fa-paper-plane"></i> Wyślij wiadomość';
+                });
+        });
+    }
+}
+
+function showFormMessage(message, type) {
+    const formMessage = document.getElementById('form-message');
+    if (formMessage) {
+        formMessage.textContent = message;
+        formMessage.className = `form-message ${type}`;
+        formMessage.style.display = 'block';
+        
+        // Scroll to message
+        formMessage.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        
+        // Hide success message after 5 seconds
+        if (type === 'success') {
+            setTimeout(() => {
+                formMessage.style.display = 'none';
+            }, 5000);
+        }
+    }
+}

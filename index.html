@@ -4,9 +4,17 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Stacja Kontroli Pojazdów & Myjnia - Istebna</title>
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/png" sizes="32x32" href="logo/SKP logo przezroczyste.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="logo/SKP logo przezroczyste.png">
+    <link rel="shortcut icon" href="logo/SKP logo przezroczyste.png">
+    <link rel="apple-touch-icon" href="logo/SKP logo przezroczyste.png">
+    
     <link rel="stylesheet" href="styles.css">
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/@emailjs/browser@3/dist/email.min.js"></script>
 </head>
 <body>
     <header>
@@ -23,6 +31,7 @@
                     <li><a href="#home">Strona główna</a></li>
                     <li><a href="#services">Usługi</a></li>
                     <li><a href="#hours">Godziny</a></li>
+                    <li><a href="#contact-form">Formularz</a></li>
                     <li><a href="#contact">Kontakt</a></li>
                 </ul>
                 <div class="hamburger">
@@ -52,7 +61,7 @@
                 <p>Nowoczesne badania techniczne i kompleksowe mycie samochodów w sercu malowniczej Istebna</p>
                 <div class="cta-buttons">
                     <a href="#services" class="btn primary">Nasze usługi</a>
-                    <a href="#contact" class="btn secondary">Kontakt</a>
+                    <a href="#contact-form" class="btn secondary">Napisz do nas</a>
                 </div>
             </div>
             <div class="hero-features">
@@ -172,6 +181,56 @@
             </div>
         </section>
 
+        <section id="contact-form" class="contact-form">
+            <div class="container">
+                <h2>Napisz do nas</h2>
+                <p class="section-subtitle">Masz pytania? Skontaktuj się z nami bezpośrednio przez formularz</p>
+                
+                <div class="form-container">
+                    <form id="contact-form-element" class="email-form">
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="user_name">Imię i nazwisko</label>
+                                <input type="text" id="user_name" name="user_name" required>
+                            </div>
+                            <div class="form-group">
+                                <label for="user_email">Email</label>
+                                <input type="email" id="user_email" name="user_email" required>
+                            </div>
+                        </div>
+                        
+                        <div class="form-row">
+                            <div class="form-group">
+                                <label for="user_phone">Telefon</label>
+                                <input type="tel" id="user_phone" name="user_phone">
+                            </div>
+                            <div class="form-group">
+                                <label for="service_type">Rodzaj usługi</label>
+                                <select id="service_type" name="service_type">
+                                    <option value="">Wybierz usługę</option>
+                                    <option value="badania-techniczne">Badania techniczne</option>
+                                    <option value="myjnia">Myjnia samochodowa</option>
+                                    <option value="inne">Inne</option>
+                                </select>
+                            </div>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="message">Wiadomość</label>
+                            <textarea id="message" name="message" rows="5" required placeholder="Opisz szczegóły swojego zapytania..."></textarea>
+                        </div>
+                        
+                        <button type="submit" class="btn-submit" id="submit-btn">
+                            <i class="fas fa-paper-plane"></i>
+                            Wyślij wiadomość
+                        </button>
+                        
+                        <div id="form-message" class="form-message"></div>
+                    </form>
+                </div>
+            </div>
+        </section>
+
         <section id="contact" class="contact">
             <div class="container">
                 <h2>Kontakt</h2>
@@ -240,6 +299,7 @@
                     <ul>
                         <li><a href="#services">Usługi</a></li>
                         <li><a href="#hours">Godziny</a></li>
+                        <li><a href="#contact-form">Formularz kontaktowy</a></li>
                         <li><a href="#contact">Kontakt</a></li>
                     </ul>
                 </div>
