@@ -693,3 +693,18 @@ function initMapFallback() {
         }, 10000);
     }
 }
+
+// Service Worker registration
+if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function() {
+        navigator.serviceWorker.register('./sw.js')
+            .then(function(registration) {
+                console.log('✅ Service Worker zarejestrowany:', registration.scope);
+            })
+            .catch(function(error) {
+                console.log('❌ Błąd rejestracji Service Worker:', error);
+            });
+    });
+} else {
+    console.log('ℹ️ Service Worker nie jest obsługiwany przez przeglądarkę');
+}

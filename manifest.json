@@ -2,7 +2,7 @@
     "name": "SKP Istebna - Stacja Kontroli Pojazdów",
     "short_name": "SKP Istebna",
     "description": "Profesjonalna stacja kontroli pojazdów i myjnia w Istebna",
-    "start_url": "/",
+    "start_url": "./",
     "display": "standalone",
     "background_color": "#1e3c72",
     "theme_color": "#1e3c72",
@@ -23,6 +23,6 @@
     ],
     "categories": ["business", "automotive"],
     "lang": "pl",
-    "scope": "/",
+    "scope": "./",
     "prefer_related_applications": false
 }
